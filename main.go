@@ -19,7 +19,7 @@ func main() {
 	log.Println("Preparing local server...")
 	rtr := mux.NewRouter()
 	rtr.HandleFunc("/_matrix/client/r0/register", func(w http.ResponseWriter, r *http.Request) {
-		log.Println()
+		log.Println("Register request received:", r.RequestURI)
 		defer dumpAndCloseStream(r.Body)
 
 		b, err := ioutil.ReadAll(r.Body)
